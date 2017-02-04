@@ -19,7 +19,7 @@ void loop()
   /* add main program code here */
 	for (i = 0; i < NUM_LEDS; i++) {
 		fill_solid(leds, NUM_LEDS, CRGB::Black);
-		leds[i] = CRGB::Red;
+		leds[i] = CRGB::Wheat;
 		updateLights(100);
 	}
 }
