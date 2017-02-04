@@ -1,18 +1,20 @@
 #include <FastLED.h>
 
-#define DATA_PIN 3
+#define LED_DATA_PIN 3
+#define POT_INPUT_PIN 2
 #define NUM_LEDS 50
 CRGB leds[NUM_LEDS];
+char debugString[2048];
 
 void setup()
 {
 
   /* add setup code here */
-	FastLED.addLeds<WS2811, DATA_PIN>(leds, NUM_LEDS);
-
+	FastLED.addLeds<WS2811, LED_DATA_PIN>(leds, NUM_LEDS);
+	//pinMode(POT_INPUT_PIN, INPUT);
 }
 
-int i;
+int i, p;
 void loop()
 {
 
@@ -20,8 +22,10 @@ void loop()
 	for (i = 0; i < NUM_LEDS; i++) {
 		fill_solid(leds, NUM_LEDS, CRGB::Black);
 		leds[i] = CRGB::Wheat;
-		updateLights(100);
+		p = analogRead(POT_INPUT_PIN);
+		updateLights(p);
 	}
+	
 }
 
 /****************************************************************************

@@ -16,6 +16,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="GTLO.ino" />
+    <None Include="README.md" />
+    <None Include="LICENSE" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.GTLO.vsarduino.h">

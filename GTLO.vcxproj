@@ -77,6 +77,8 @@
     <None Include="GTLO.ino">
       <FileType>CppCode</FileType>
     </None>
+    <None Include="LICENSE" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="__vm\.GTLO.vsarduino.h" />
