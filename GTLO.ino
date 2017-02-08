@@ -31,6 +31,7 @@ void loop()
 	// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
 	sprintf(debugString, "Looping millis %lu", millis());
 	Serial.println(debugString);
+	paddle.update();
 	paddle.render();
 	render();
 }
