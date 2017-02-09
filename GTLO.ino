@@ -7,6 +7,8 @@
 #pragma GCC optimize ("O0")
 #endif
 
+/* Globals */
+int i;
 char debugString[512];
 
 CRGB leds[NUM_LEDS];
@@ -29,8 +31,6 @@ void loop()
 
   /* add main program code here */
 	// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
-	sprintf(debugString, "Looping millis %lu", millis());
-	Serial.println(debugString);
 	paddle.update();
 	paddle.render();
 	render();
@@ -51,7 +51,6 @@ Updates the string of lights based on the 'leds' array, then waits for the speci
 (i.e. turning off all the lights)
 */
 void render() {
-	Serial.println("Rendering...");
 	FastLED.show();
 	FastLED.delay(FRAME_TIME);
 	fill_solid(leds, NUM_LEDS, CRGB::Black);
