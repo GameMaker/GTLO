@@ -29,9 +29,9 @@ int i;
 
 void Paddle::render() {
 	// You need to start at loc - 1/2 width, rounding down
-	lowLED = max(0, (_loc) / 2);
+	lowLED = (int) max(0, _loc - (_width / 2 + 1));
 	// And go up to loc + 1/2 width, rounding up
-	highLED = min(NUM_LEDS - 1, ((_loc) / 2) + 1);
+	highLED = min(NUM_LEDS - 1, _loc + (_width / 2 + 2));
 	intensity = 0;
 	for (i = lowLED; i < highLED; i++) {
 		// The formula (scaled to 0.0-1.0) is:
@@ -39,7 +39,7 @@ void Paddle::render() {
 		// Because I said so.
 		// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
 		// Oh, and then you need to multiply by 255, since that was from 0 to 1
-		intensity = max(0, min(1, (((_width - 1) / 2) + 1 - (abs(_loc - i))))) * 255;
+		intensity = max(0, min(1, (((_width - 1) / 2) + 1 - (abs(_loc - i)))));
 		_leds[i].r = _color.r * intensity;
 		_leds[i].g = _color.g * intensity;
 		_leds[i].b = _color.b * intensity;
