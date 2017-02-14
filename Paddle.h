@@ -11,7 +11,7 @@
 *****************************************************************************/
 class Paddle {
 public:
-	float _loc;
+	int _loc; // 0 to GAME_FIELD_UPPER_LIMIT, which translates to 0.00  to 100.00%
 	int _width;
 	CRGB _color;
 	int _brightness;

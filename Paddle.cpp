@@ -8,9 +8,15 @@ Paddle::Paddle() {};
 Paddle::~Paddle() {/*Nothing to deconstruct*/ }
 
 void Paddle::init(CRGB leds[NUM_LEDS]) {
-	Serial.println("In the Paddle init");
-	_loc = NUM_LEDS / 2;
-	_width = 1;
+	// _loc is on a scale from 0 to 999, and is not scaled by number of LEDs.
+	// Game starts with the paddle in the middle of the line. All spatial units are in %, but using 
+	// integer math, with each unit equalling 1/100 of 1%.
+	_loc = 4999;
+	// Width also needs to be in percentage. Since I'm using 50 LEDs as a start, 1 light is 2%, so 20/1000ths.
+	_width = 100; // We extend this many units in each direction, so this is 100, 
+	// or "1" unit each way, so 2% of the whole bar. This means that with less than 50 LEDs, you can
+	// have a paddle that disappears in between LEDs.
+	// TODO - put a warning message if you try to play on less than 50.
 	_color = CRGB::Blue;
 	_brightness = 255;
 	_brightnessDir = -1;
@@ -26,7 +32,7 @@ void Paddle::update() {
 	joyY = analogRead(PIN_JOY_Y);
 
 	if (joyX > 512 + JOY_HALF_DEAD_ZONE) {
-		_loc = min(NUM_LEDS - 1, _loc + (joyX - 512) / JOY_X_SCALE_FACTOR);
+		_loc = min(GAME_FIELD_UPPER_LIMIT, _loc + (joyX - 512) / JOY_X_SCALE_FACTOR);
 	}
 	else if (joyX < 512 - JOY_HALF_DEAD_ZONE) {
 		_loc = max(0, _loc - ((512 - joyX) / JOY_X_SCALE_FACTOR));
@@ -34,39 +40,41 @@ void Paddle::update() {
 
 	if (!adjustedPaddleLastFrame) {
 		if (joyY > 512 + JOY_HALF_DEAD_ZONE) {
-			_width = min(NUM_LEDS / 2, _width + 1);
+			_width = min(TOTAL_GAME_FIELD_UNITS / 2, _width + PADDLE_WIDTH_CHANGE_INCREMENT);
 			adjustedPaddleLastFrame = true;
 		}
 		else if (joyY < 512 - JOY_HALF_DEAD_ZONE) {
-			_width = max(1, _width - 1);
+			_width = max(100, _width - PADDLE_WIDTH_CHANGE_INCREMENT);
 			adjustedPaddleLastFrame = true;
 		}
 	}
 	else if (abs(joyY - 512) < JOY_HALF_DEAD_ZONE) {
 		adjustedPaddleLastFrame = false;
 	}
-
 }
 
-int lowLED;
-int highLED;
-float intensity;
+int start;
+int end;
+int intensity;
 
 void Paddle::render() {
 	// You need to start at loc - 1/2 width, rounding down
-	lowLED = (int)max(0, _loc - (_width / 2));
+	start = max(0, _loc - _width);
+	start = start / LED_WIDTH;
 	// And go up to loc + 1/2 width, rounding up
-	highLED = min(NUM_LEDS - 1, _loc + (_width / 2) + 2);
-	intensity = 0;
-	for (i = lowLED; i < highLED; i++) {
+	end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+	//intensity = 0;
+	for (i = start; i < end; i++) {
 		// The formula (scaled to 0.0-1.0) is:
 		// intensity = max(0, min(1, (("half the width minus 1") + 1) - ("absolute distance from loc to i")
 		// Because I said so.
 		// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
-		intensity = max(0, min(1, ((((_width - 1) / 2.0) + 1.0) - (abs(_loc - i)))));
-		intensity *= intensity;
-		_leds[i].r = _color.r * intensity;
-		_leds[i].g = _color.g * intensity;
-		_leds[i].b = _color.b * intensity;
+
+		// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
+		intensity = _width - abs((i * LED_WIDTH) - _loc);
+		intensity = max(0,min(100, intensity));
+		_leds[i].r = (_color.r * intensity) / 100;
+		_leds[i].g = (_color.g * intensity) / 100;
+		_leds[i].b = (_color.b * intensity) / 100;
 	}
 }

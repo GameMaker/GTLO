@@ -10,6 +10,7 @@
 /* Globals */
 int i;
 char debugString[512];
+int LED_WIDTH = TOTAL_GAME_FIELD_UNITS / NUM_LEDS;
 
 CRGB leds[NUM_LEDS];
 
