@@ -1,6 +1,7 @@
 #include <FastLED.h>
 #include <stdio.h>
 #include "Paddle.h"
+#include "Ball.h"
 #include "Constants.h"
 
 #if _VM_DEBUG
@@ -14,6 +15,9 @@ int LED_WIDTH = TOTAL_GAME_FIELD_UNITS / NUM_LEDS;
 
 CRGB leds[NUM_LEDS];
 
+Ball ballList[MAX_NUM_OF_BALLS];
+int numOfBalls = 0;
+
 int reading;
 
 Paddle paddle;
@@ -25,6 +29,7 @@ void setup()
 	FastLED.addLeds<WS2811, LED_DATA_PIN>(leds, NUM_LEDS);
 
 	paddle.init(leds);
+	dropBall();
 }
 
 void loop()
@@ -34,9 +39,20 @@ void loop()
 	// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
 	paddle.update();
 	paddle.render();
+	for (i = 0; i < numOfBalls; i++) {
+		ballList[i].update();
+		ballList[i].render();
+	}
 	render();
 }
 
+void dropBall() {
+	if (numOfBalls < MAX_NUM_OF_BALLS - 1) {
+		ballList[numOfBalls] = Ball();
+		ballList[numOfBalls].init(leds);
+		numOfBalls++;
+	}
+}
 /****************************************************************************
 **                                                                         **
 **                             UTILITIES                                   **

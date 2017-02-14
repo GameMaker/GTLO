@@ -1,6 +1,13 @@
-C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\GTLO.cpp.o: \
- C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\GTLO.cpp \
- c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/arduino.h \
+C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\Ball.cpp.o: \
+ C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\Ball.cpp \
+ C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\Ball.h \
+ d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/FastLED.h \
+ d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/cpp_compat.h \
+ d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/FastLED.h \
+ d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/fastled_config.h \
+ d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/led_sysdefs.h \
+ d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/platforms/avr/led_sysdefs_avr.h \
+ c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
  c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
  c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/WString.h \
@@ -11,13 +18,6 @@ C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\GTLO.cpp.o: \
  c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/USBAPI.h \
  c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\variants\standard/pins_arduino.h \
- d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/FastLED.h \
- d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/cpp_compat.h \
- d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/FastLED.h \
- d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/fastled_config.h \
- d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/led_sysdefs.h \
- d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/platforms/avr/led_sysdefs_avr.h \
- c:\Program\ Files\ (x86)\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
  d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/bitswap.h \
  d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/controller.h \
  d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/pixeltypes.h \
@@ -50,7 +50,5 @@ C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\GTLO.cpp.o: \
  d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/fastspi_bitbang.h \
  d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/fastled_delay.h \
  d:\Dropbox\AJC\Arduino\libraries\FastLED-3.1.3/chipsets.h \
- C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\Paddle.h \
  C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\Constants.h \
- C:\Users\pounc\AppData\Local\Temp\VMBuilds\GTLO\uno\Debug\Ball.h \
  C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\ 14.0\Common7\IDE\Extensions\k1vx04ay.pqg\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h

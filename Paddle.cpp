@@ -1,7 +1,7 @@
 #include "Paddle.h"
-#if _VM_DEBUG
-#pragma GCC optimize ("O0")
-#endif
+//#if _VM_DEBUG
+//#pragma GCC optimize ("O0")
+//#endif
 
 Paddle::Paddle() {};
 

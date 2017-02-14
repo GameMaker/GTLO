@@ -15,8 +15,13 @@
 #define TOTAL_GAME_FIELD_UNITS 10000
 #define GAME_FIELD_UPPER_LIMIT TOTAL_GAME_FIELD_UNITS - 1
 
+#define MAX_NUM_OF_BALLS 10
+
 extern int LED_WIDTH;
 
 extern char debugString[512];
 
 extern int i;
+extern int start;
+extern int end;
+extern int intensity;

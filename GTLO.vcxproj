@@ -81,11 +81,13 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="__vm\.GTLO.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Paddle.cpp" />
   </ItemGroup>
   <PropertyGroup>
