@@ -62,7 +62,7 @@ void Paddle::render() {
 	start = max(0, _loc - _width);
 	start = start / LED_WIDTH;
 	// And go up to loc + 1/2 width, rounding up
-	end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+	end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
 	//intensity = 0;
 	for (i = start; i < end; i++) {
 		// The formula (scaled to 0.0-1.0) is:
@@ -71,7 +71,7 @@ void Paddle::render() {
 		// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
 
 		// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-		intensity = _width - abs((i * LED_WIDTH) - _loc);
+		intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 		intensity = max(0,min(100, intensity));
 		_leds[i].r = (_color.r * intensity) / 100;
 		_leds[i].g = (_color.g * intensity) / 100;

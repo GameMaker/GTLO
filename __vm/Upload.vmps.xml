@@ -37,36 +37,12 @@
           <MessageVariable Name="LED_WIDTH" Index="6" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="2" Name="Paddle.cpp, line 64" Id="a55f6d55-4241-4d0f-9e40-c29381e24643" Enabled="0" Message="$FUNCTION: paddle is at {_loc} by {_width}" MessageTextType="0" PreProcessedMessage="render(): paddle is at {0} by {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="64" FileColumn="1" FunctionName="render()" FunctionLineOffset="4" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='a55f6d55-4241-4d0f-9e40-c29381e24643'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>57	int end;
-58	int intensity;
-59	
-60	void Paddle::render() {
-61		// You need to start at loc - 1/2 width, rounding down
-62		start = max(0, _loc - _width);
-63		start = start / LED_WIDTH;
---&gt;64		// And go up to loc + 1/2 width, rounding up
-65		end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
-66		//intensity = 0;
-67		for (i = start; i &lt; end; i++) {
-68			// The formula (scaled to 0.0-1.0) is:
-69			// intensity = max(0, min(1, (("half the width minus 1") + 1) - ("absolute distance from loc to i")
-70			// Because I said so.
-71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
-72	
-73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-</Source>
-        <MessageVariables>
-          <MessageVariable Name="_loc" Index="1" />
-          <MessageVariable Name="_width" Index="2" />
-        </MessageVariables>
-      </BreakPoint>
-      <BreakPoint Index="3" Name="Paddle.cpp, line 68" Id="35573853-4f55-4893-8069-f7ec6c946c63" Enabled="0" Message="$FUNCTION Start of loop, lowLED = {lowLED}, highLED = {highLED}" MessageTextType="0" PreProcessedMessage="render() Start of loop, lowLED = {0}, highLED = {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="68" FileColumn="1" FunctionName="render()" FunctionLineOffset="8" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='35573853-4f55-4893-8069-f7ec6c946c63'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="2" Name="Paddle.cpp, line 68" Id="35573853-4f55-4893-8069-f7ec6c946c63" Enabled="0" Message="$FUNCTION Start of loop, lowLED = {lowLED}, highLED = {highLED}" MessageTextType="0" PreProcessedMessage="render() Start of loop, lowLED = {0}, highLED = {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="68" FileColumn="1" FunctionName="render()" FunctionLineOffset="8" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='35573853-4f55-4893-8069-f7ec6c946c63'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>61		// You need to start at loc - 1/2 width, rounding down
 62		start = max(0, _loc - _width);
 63		start = start / LED_WIDTH;
 64		// And go up to loc + 1/2 width, rounding up
-65		end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+65		end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
 66		//intensity = 0;
 67		for (i = start; i &lt; end; i++) {
 --&gt;68			// The formula (scaled to 0.0-1.0) is:
@@ -75,7 +51,7 @@
 71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
 72	
 73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-74			intensity = _width - abs((i * LED_WIDTH) - _loc);
+74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 75			intensity = max(0,min(100, intensity));
 76			_leds[i].r = (_color.r * intensity) / 100;
 77			_leds[i].g = (_color.g * intensity) / 100;
@@ -85,12 +61,12 @@
           <MessageVariable Name="highLED" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="4" Name="Paddle.cpp, line 77" Id="cfa5cb2c-7bfb-44c2-8936-4cf25fb9d21e" Enabled="0" Message="$FUNCTION Intensity [{i}] is {intensity}" MessageTextType="0" PreProcessedMessage="render() Intensity [{0}] is {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="77" FileColumn="1" FunctionName="render()" FunctionLineOffset="16" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='cfa5cb2c-7bfb-44c2-8936-4cf25fb9d21e'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="3" Name="Paddle.cpp, line 77" Id="cfa5cb2c-7bfb-44c2-8936-4cf25fb9d21e" Enabled="0" Message="$FUNCTION Intensity [{i}] is {intensity}" MessageTextType="0" PreProcessedMessage="render() Intensity [{0}] is {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="77" FileColumn="1" FunctionName="render()" FunctionLineOffset="16" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='cfa5cb2c-7bfb-44c2-8936-4cf25fb9d21e'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>70			// Because I said so.
 71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
 72	
 73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-74			intensity = _width - abs((i * LED_WIDTH) - _loc);
+74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 75			intensity = max(0,min(100, intensity));
 76			_leds[i].r = (_color.r * intensity) / 100;
 --&gt;77			_leds[i].g = (_color.g * intensity) / 100;
@@ -103,14 +79,14 @@
           <MessageVariable Name="intensity" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="5" Name="Paddle.cpp, line 66" Id="6c4a314a-fcf2-42c5-92f8-7cbe88c54e74" Enabled="0" Message="$FUNCTION lowL {lowLED} highL {highLED}" MessageTextType="0" PreProcessedMessage="render() lowL {0} highL {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="66" FileColumn="1" FunctionName="render()" FunctionLineOffset="6" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='6c4a314a-fcf2-42c5-92f8-7cbe88c54e74'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="4" Name="Paddle.cpp, line 66" Id="6c4a314a-fcf2-42c5-92f8-7cbe88c54e74" Enabled="0" Message="$FUNCTION lowL {lowLED} highL {highLED}" MessageTextType="0" PreProcessedMessage="render() lowL {0} highL {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="66" FileColumn="1" FunctionName="render()" FunctionLineOffset="6" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='6c4a314a-fcf2-42c5-92f8-7cbe88c54e74'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>59	
 60	void Paddle::render() {
 61		// You need to start at loc - 1/2 width, rounding down
 62		start = max(0, _loc - _width);
 63		start = start / LED_WIDTH;
 64		// And go up to loc + 1/2 width, rounding up
-65		end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+65		end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
 --&gt;66		//intensity = 0;
 67		for (i = start; i &lt; end; i++) {
 68			// The formula (scaled to 0.0-1.0) is:
@@ -119,7 +95,7 @@
 71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
 72	
 73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-74			intensity = _width - abs((i * LED_WIDTH) - _loc);
+74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 75			intensity = max(0,min(100, intensity));
 </Source>
         <MessageVariables>
@@ -127,13 +103,13 @@
           <MessageVariable Name="highLED" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="6" Name="Paddle.cpp, line 67" Id="c7b2729b-304d-4937-b01d-8c5df4458095" Enabled="0" Message="$FUNCTION loc {_loc} width {_width} start {start} end {end} LED_WIDTH  {LED_WIDTH}" MessageTextType="0" PreProcessedMessage="render() loc {0} width {1} start {2} end {3} LED_WIDTH  {4}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="67" FileColumn="1" FunctionName="render()" FunctionLineOffset="7" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='c7b2729b-304d-4937-b01d-8c5df4458095'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="5" Name="Paddle.cpp, line 67" Id="c7b2729b-304d-4937-b01d-8c5df4458095" Enabled="0" Message="$FUNCTION loc {_loc} width {_width} start {start} end {end} LED_WIDTH  {LED_WIDTH}" MessageTextType="0" PreProcessedMessage="render() loc {0} width {1} start {2} end {3} LED_WIDTH  {4}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="67" FileColumn="1" FunctionName="render()" FunctionLineOffset="7" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='c7b2729b-304d-4937-b01d-8c5df4458095'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>60	void Paddle::render() {
 61		// You need to start at loc - 1/2 width, rounding down
 62		start = max(0, _loc - _width);
 63		start = start / LED_WIDTH;
 64		// And go up to loc + 1/2 width, rounding up
-65		end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+65		end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
 66		//intensity = 0;
 --&gt;67		for (i = start; i &lt; end; i++) {
 68			// The formula (scaled to 0.0-1.0) is:
@@ -142,7 +118,7 @@
 71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
 72	
 73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-74			intensity = _width - abs((i * LED_WIDTH) - _loc);
+74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 75			intensity = max(0,min(100, intensity));
 76			_leds[i].r = (_color.r * intensity) / 100;
 </Source>
@@ -154,10 +130,10 @@
           <MessageVariable Name="LED_WIDTH" Index="5" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="7" Name="Paddle.cpp, line 79" Id="778bee77-4f39-4e9c-9752-bd4b4fd68d13" Enabled="0" Message="Paddle::$FUNCTION leds[{i}] is {_leds[i].r},{_leds[i].g},{_leds[i].b}, intensity is {intensity} {_width}" MessageTextType="0" PreProcessedMessage="Paddle::render() leds[{0}] is {1},{2},{3}, intensity is {4} {5}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="79" FileColumn="1" FunctionName="render()" FunctionLineOffset="18" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='778bee77-4f39-4e9c-9752-bd4b4fd68d13'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="6" Name="Paddle.cpp, line 79" Id="778bee77-4f39-4e9c-9752-bd4b4fd68d13" Enabled="0" Message="Paddle::$FUNCTION leds[{i}] is {_leds[i].r},{_leds[i].g},{_leds[i].b}, intensity is {intensity} {_width}" MessageTextType="0" PreProcessedMessage="Paddle::render() leds[{0}] is {1},{2},{3}, intensity is {4} {5}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="79" FileColumn="1" FunctionName="render()" FunctionLineOffset="18" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='778bee77-4f39-4e9c-9752-bd4b4fd68d13'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>72	
 73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-74			intensity = _width - abs((i * LED_WIDTH) - _loc);
+74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 75			intensity = max(0,min(100, intensity));
 76			_leds[i].r = (_color.r * intensity) / 100;
 77			_leds[i].g = (_color.g * intensity) / 100;
@@ -174,7 +150,7 @@
           <MessageVariable Name="_width" Index="6" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="8" Name="Paddle.cpp, line 32" Id="1df6f046-b291-4cd1-8bbd-3084222ed4af" Enabled="0" Message="Joystick is at {joyX}, {joyY}" MessageTextType="0" PreProcessedMessage="Joystick is at {0}, {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="32" FileColumn="1" FunctionName="update()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='1df6f046-b291-4cd1-8bbd-3084222ed4af'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="7" Name="Paddle.cpp, line 32" Id="1df6f046-b291-4cd1-8bbd-3084222ed4af" Enabled="0" Message="Joystick is at {joyX}, {joyY}" MessageTextType="0" PreProcessedMessage="Joystick is at {0}, {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="32" FileColumn="1" FunctionName="update()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='1df6f046-b291-4cd1-8bbd-3084222ed4af'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>25	}
 26	
 27	int joyX, joyY;
@@ -198,7 +174,7 @@
           <MessageVariable Name="joyY" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="9" Name="Paddle.cpp, line 39" Id="b35d84aa-eee7-466f-8885-c12cd8f905df" Enabled="0" Message="$FUNCTION {_loc} {joyX} {joyY}" MessageTextType="0" PreProcessedMessage="update() {0} {1} {2}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="39" FileColumn="1" FunctionName="update()" FunctionLineOffset="10" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='b35d84aa-eee7-466f-8885-c12cd8f905df'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="8" Name="Paddle.cpp, line 39" Id="b35d84aa-eee7-466f-8885-c12cd8f905df" Enabled="0" Message="$FUNCTION {_loc} {joyX} {joyY}" MessageTextType="0" PreProcessedMessage="update() {0} {1} {2}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="39" FileColumn="1" FunctionName="update()" FunctionLineOffset="10" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='b35d84aa-eee7-466f-8885-c12cd8f905df'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>32		joyY = analogRead(PIN_JOY_Y);
 33	
 34		if (joyX &gt; 512 + JOY_HALF_DEAD_ZONE) {
@@ -223,13 +199,13 @@
           <MessageVariable Name="joyY" Index="3" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="10" Name="Paddle.cpp, line 76" Id="d1fb3583-2e55-4ce3-b4aa-710abcc0f757" Enabled="0" Message="Intensity [{i}] is {intensity}" MessageTextType="0" PreProcessedMessage="Intensity [{0}] is {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="76" FileColumn="1" FunctionName="render()" FunctionLineOffset="15" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='d1fb3583-2e55-4ce3-b4aa-710abcc0f757'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="9" Name="Paddle.cpp, line 76" Id="d1fb3583-2e55-4ce3-b4aa-710abcc0f757" Enabled="0" Message="Intensity [{i}] is {intensity}" MessageTextType="0" PreProcessedMessage="Intensity [{0}] is {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="76" FileColumn="1" FunctionName="render()" FunctionLineOffset="15" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='d1fb3583-2e55-4ce3-b4aa-710abcc0f757'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>69			// intensity = max(0, min(1, (("half the width minus 1") + 1) - ("absolute distance from loc to i")
 70			// Because I said so.
 71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
 72	
 73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
-74			intensity = _width - abs((i * LED_WIDTH) - _loc);
+74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 75			intensity = max(0,min(100, intensity));
 --&gt;76			_leds[i].r = (_color.r * intensity) / 100;
 77			_leds[i].g = (_color.g * intensity) / 100;
@@ -242,7 +218,7 @@
           <MessageVariable Name="intensity" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="11" Name="Paddle.cpp, line 62" Id="c2c3d27f-9945-4f2e-901f-6f15d09a626a" Enabled="0" Message="First, start is {start}" MessageTextType="0" PreProcessedMessage="First, start is {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="62" FileColumn="1" FunctionName="render()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='c2c3d27f-9945-4f2e-901f-6f15d09a626a'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="10" Name="Paddle.cpp, line 62" Id="c2c3d27f-9945-4f2e-901f-6f15d09a626a" Enabled="0" Message="First, start is {start}" MessageTextType="0" PreProcessedMessage="First, start is {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="62" FileColumn="1" FunctionName="render()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='c2c3d27f-9945-4f2e-901f-6f15d09a626a'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>55	
 56	int start;
 57	int end;
@@ -253,7 +229,7 @@
 --&gt;62		start = max(0, _loc - _width);
 63		start = start / LED_WIDTH;
 64		// And go up to loc + 1/2 width, rounding up
-65		end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+65		end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
 66		//intensity = 0;
 67		for (i = start; i &lt; end; i++) {
 68			// The formula (scaled to 0.0-1.0) is:
@@ -265,7 +241,7 @@
           <MessageVariable Name="start" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="12" Name="Paddle.cpp, line 63" Id="31b73375-31c7-465a-a765-cfeb951d1de4" Enabled="0" Message="Then, start is {start} ( after / by {LED_WIDTH})" MessageTextType="0" PreProcessedMessage="Then, start is {0} ( after / by {1})" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="63" FileColumn="1" FunctionName="render()" FunctionLineOffset="4" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='31b73375-31c7-465a-a765-cfeb951d1de4'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="11" Name="Paddle.cpp, line 63" Id="31b73375-31c7-465a-a765-cfeb951d1de4" Enabled="0" Message="Then, start is {start} ( after / by {LED_WIDTH})" MessageTextType="0" PreProcessedMessage="Then, start is {0} ( after / by {1})" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="63" FileColumn="1" FunctionName="render()" FunctionLineOffset="4" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='31b73375-31c7-465a-a765-cfeb951d1de4'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>56	int start;
 57	int end;
 58	int intensity;
@@ -275,7 +251,7 @@
 62		start = max(0, _loc - _width);
 --&gt;63		start = start / LED_WIDTH;
 64		// And go up to loc + 1/2 width, rounding up
-65		end = 1 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+65		end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
 66		//intensity = 0;
 67		for (i = start; i &lt; end; i++) {
 68			// The formula (scaled to 0.0-1.0) is:
@@ -289,7 +265,7 @@
           <MessageVariable Name="LED_WIDTH" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="13" Name="Paddle.cpp, line 44" Id="7db18f87-b6b5-41e5-bd0f-63c2a07bca75" Enabled="0" Message="Paddle got bigger to {_width}" MessageTextType="0" PreProcessedMessage="Paddle got bigger to {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="44" FileColumn="1" FunctionName="update()" FunctionLineOffset="15" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='7db18f87-b6b5-41e5-bd0f-63c2a07bca75'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="12" Name="Paddle.cpp, line 44" Id="7db18f87-b6b5-41e5-bd0f-63c2a07bca75" Enabled="0" Message="Paddle got bigger to {_width}" MessageTextType="0" PreProcessedMessage="Paddle got bigger to {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="44" FileColumn="1" FunctionName="update()" FunctionLineOffset="15" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='7db18f87-b6b5-41e5-bd0f-63c2a07bca75'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>37		else if (joyX &lt; 512 - JOY_HALF_DEAD_ZONE) {
 38			_loc = max(0, _loc - ((512 - joyX) / JOY_X_SCALE_FACTOR));
 39		}
@@ -312,7 +288,7 @@
           <MessageVariable Name="_width" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="14" Name="Paddle.cpp, line 48" Id="107d3f4c-ba97-4b44-9137-a3ffd82a37f6" Enabled="0" Message="Paddle got smaller to {_width}" MessageTextType="0" PreProcessedMessage="Paddle got smaller to {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="48" FileColumn="1" FunctionName="update()" FunctionLineOffset="19" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='107d3f4c-ba97-4b44-9137-a3ffd82a37f6'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="13" Name="Paddle.cpp, line 48" Id="107d3f4c-ba97-4b44-9137-a3ffd82a37f6" Enabled="0" Message="Paddle got smaller to {_width}" MessageTextType="0" PreProcessedMessage="Paddle got smaller to {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="48" FileColumn="1" FunctionName="update()" FunctionLineOffset="19" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='107d3f4c-ba97-4b44-9137-a3ffd82a37f6'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>41		if (!adjustedPaddleLastFrame) {
 42			if (joyY &gt; 512 + JOY_HALF_DEAD_ZONE) {
 43				_width = min(TOTAL_GAME_FIELD_UNITS / 2, _width + PADDLE_WIDTH_CHANGE_INCREMENT);
@@ -333,6 +309,51 @@
 </Source>
         <MessageVariables>
           <MessageVariable Name="_width" Index="1" />
+        </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="14" Name="Paddle.cpp, line 74" Id="5c494df5-b777-49ba-bbe9-80f0d4fa210f" Enabled="0" Message="First, intensity [{i}] is {intensity}" MessageTextType="0" PreProcessedMessage="First, intensity [{0}] is {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="74" FileColumn="1" FunctionName="render()" FunctionLineOffset="15" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='5c494df5-b777-49ba-bbe9-80f0d4fa210f'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>67		for (i = start; i &lt; end; i++) {
+68			// The formula (scaled to 0.0-1.0) is:
+69			// intensity = max(0, min(1, (("half the width minus 1") + 1) - ("absolute distance from loc to i")
+70			// Because I said so.
+71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
+72	
+73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
+--&gt;74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
+75			intensity = max(0,min(100, intensity));
+76			_leds[i].r = (_color.r * intensity) / 100;
+77			_leds[i].g = (_color.g * intensity) / 100;
+78			_leds[i].b = (_color.b * intensity) / 100;
+79		}
+80	}
+</Source>
+        <MessageVariables>
+          <MessageVariable Name="i" Index="1" />
+          <MessageVariable Name="intensity" Index="2" />
+        </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="15" Name="Paddle.cpp, line 65" Id="bf46ac01-16f6-43a3-bfc2-446a30e46dfa" Enabled="0" Message="$FUNCTION: paddle is at {_loc} by {_width}" MessageTextType="0" PreProcessedMessage="render(): paddle is at {0} by {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="65" FileColumn="1" FunctionName="render()" FunctionLineOffset="6" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='bf46ac01-16f6-43a3-bfc2-446a30e46dfa'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>58	int intensity;
+59	
+60	void Paddle::render() {
+61		// You need to start at loc - 1/2 width, rounding down
+62		start = max(0, _loc - _width);
+63		start = start / LED_WIDTH;
+64		// And go up to loc + 1/2 width, rounding up
+--&gt;65		end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+66		//intensity = 0;
+67		for (i = start; i &lt; end; i++) {
+68			// The formula (scaled to 0.0-1.0) is:
+69			// intensity = max(0, min(1, (("half the width minus 1") + 1) - ("absolute distance from loc to i")
+70			// Because I said so.
+71			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
+72	
+73			// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
+74			intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
+</Source>
+        <MessageVariables>
+          <MessageVariable Name="_loc" Index="1" />
+          <MessageVariable Name="_width" Index="2" />
         </MessageVariables>
       </BreakPoint>
     </BreakPoints>
