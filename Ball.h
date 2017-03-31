@@ -5,6 +5,9 @@
 
 class Ball
 {
+private:
+	int i;
+
 public:
 	int _loc; // 0 to GAME_FIELD_UPPER_LIMIT, which translates to 0.00  to 100.00%
 	int _width;
@@ -14,7 +17,8 @@ public:
 	int _NUM_LEDS;
 	void update();
 	void render();
-	int _speed;
+	int _speedVert;
+	int _speedHoriz;
 	void init(CRGB leds[NUM_LEDS]);
 	Ball();
 	~Ball();

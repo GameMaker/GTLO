@@ -352,70 +352,50 @@
           <MessageVariable Name="_width" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="16" Name="GTLO.ino, line 32" Id="36ed1d0b-f68b-4b01-9595-9fca845089b4" Enabled="0" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\gtlo.ino" FileLine="32" FileColumn="1" FunctionName="setup()" FunctionLineOffset="8" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='36ed1d0b-f68b-4b01-9595-9fca845089b4'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>25	{
-26	
-27	  /* add setup code here */
-28		FastLED.addLeds&lt;WS2811, LED_DATA_PIN&gt;(leds, NUM_LEDS);
-29	
-30		paddle.init(leds);
-31		dropBall();
---&gt;32	}
-33	
-34	void loop()
-35	{
-36	
-37	  /* add main program code here */
-38		// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
-39		fill_solid(leds, NUM_LEDS, CRGB::White);
-40		paddle.update();
-41		paddle.render();
+      <BreakPoint Index="16" Name="GTLO.ino, line 33" Id="36ed1d0b-f68b-4b01-9595-9fca845089b4" Enabled="0" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\gtlo.ino" FileLine="33" FileColumn="1" FunctionName="setup()" FunctionLineOffset="8" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='36ed1d0b-f68b-4b01-9595-9fca845089b4'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>26	{
+27	
+28	  /* add setup code here */
+29		FastLED.addLeds&lt;WS2811, LED_DATA_PIN&gt;(leds, NUM_LEDS);
+30	
+31		paddle.init(leds);
+32		dropBall();
+--&gt;33	}
+34	
+35	void loop()
+36	{
+37	
+38	  /* add main program code here */
+39		// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
+40		fill_solid(leds, NUM_LEDS, CRGB::Black);
+41		paddle.update();
+42		paddle.render();
 </Source>
       </BreakPoint>
-      <BreakPoint Index="17" Name="GTLO.ino, line 51" Id="9836a1b7-e156-4c8a-b0e4-6752bbaa1b7d" Enabled="0" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\gtlo.ino" FileLine="51" FileColumn="1" FunctionName="dropBall()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='9836a1b7-e156-4c8a-b0e4-6752bbaa1b7d'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>44			ballList[i].render();
-45		}
-46		render();
-47	}
-48	
-49	void dropBall() {
-50		if (numOfBalls &lt; MAX_NUM_OF_BALLS - 1) {
---&gt;51			ballList[numOfBalls] = Ball();
-52			ballList[numOfBalls].init(leds);
-53			numOfBalls++;
-54		}
-55	}
-56	/****************************************************************************
-57	**                                                                         **
-58	**                             UTILITIES                                   **
-59	**                                                                         **
-60	*****************************************************************************/
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="18" Name="Ball.cpp, line 15" Id="f4534432-c114-4532-8843-80f5663f0228" Enabled="0" Message="Ball initialized at {_loc}" MessageTextType="0" PreProcessedMessage="Ball initialized at {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="15" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="9" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='f4534432-c114-4532-8843-80f5663f0228'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>8		_loc = rand();
-9		_loc = _loc / (RAND_MAX / TOTAL_GAME_FIELD_UNITS);
+      <BreakPoint Index="17" Name="Ball.cpp, line 16" Id="f4534432-c114-4532-8843-80f5663f0228" Enabled="0" Message="Ball initialized at {_loc}" MessageTextType="0" PreProcessedMessage="Ball initialized at {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="16" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="9" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='f4534432-c114-4532-8843-80f5663f0228'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>9		_loc = _loc / (RAND_MAX / TOTAL_GAME_FIELD_UNITS);
 10		//_loc = _loc / RAND_MAX;
 11		_width = LED_WIDTH / 2;
 12		_color = CRGB::Blue;
-13		_height = 10000;
-14		_speed = 0;
---&gt;15		_leds = leds;
-16	}
-17	
-18	Ball::~Ball()
-19	{
-20	}
-21	
-22	void Ball::update() {
-23		_speed -= 1;
-24		_height += _speed;
+13		_height = 100;
+14		_speedVert = 0;
+15		_speedHoriz = rand() % 24;
+--&gt;16		_leds = leds;
+17	}
+18	
+19	Ball::~Ball()
+20	{
+21	}
+22	
+23	void Ball::update() {
+24		_speedVert -= 1;
+25		_height += _speedVert;
 </Source>
         <MessageVariables>
           <MessageVariable Name="_loc" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="19" Name="Ball.cpp, line 8" Id="637cff19-8110-4eb7-b5e2-e2242b1d33d8" Enabled="0" Message="loc1 {_loc}" MessageTextType="0" PreProcessedMessage="loc1 {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="8" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="2" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='637cff19-8110-4eb7-b5e2-e2242b1d33d8'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="18" Name="Ball.cpp, line 8" Id="637cff19-8110-4eb7-b5e2-e2242b1d33d8" Enabled="0" Message="loc1 {_loc}" MessageTextType="0" PreProcessedMessage="loc1 {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="8" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="2" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='637cff19-8110-4eb7-b5e2-e2242b1d33d8'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>1	#include "Ball.h"
 2	
 3	Ball::Ball()
@@ -428,17 +408,17 @@
 10		//_loc = _loc / RAND_MAX;
 11		_width = LED_WIDTH / 2;
 12		_color = CRGB::Blue;
-13		_height = 10000;
-14		_speed = 0;
-15		_leds = leds;
-16	}
-17	
+13		_height = 100;
+14		_speedVert = 0;
+15		_speedHoriz = rand() % 24;
+16		_leds = leds;
+17	}
 </Source>
         <MessageVariables>
           <MessageVariable Name="_loc" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="20" Name="Ball.cpp, line 9" Id="efad19f1-74c9-427b-9611-28a8062a108b" Enabled="0" Message="loc2 {_loc}" MessageTextType="0" PreProcessedMessage="loc2 {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="9" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='efad19f1-74c9-427b-9611-28a8062a108b'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="19" Name="Ball.cpp, line 9" Id="efad19f1-74c9-427b-9611-28a8062a108b" Enabled="0" Message="loc2 {_loc}" MessageTextType="0" PreProcessedMessage="loc2 {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="9" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='efad19f1-74c9-427b-9611-28a8062a108b'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>2	
 3	Ball::Ball()
 4	{
@@ -450,18 +430,18 @@
 10		//_loc = _loc / RAND_MAX;
 11		_width = LED_WIDTH / 2;
 12		_color = CRGB::Blue;
-13		_height = 10000;
-14		_speed = 0;
-15		_leds = leds;
-16	}
-17	
-18	Ball::~Ball()
+13		_height = 100;
+14		_speedVert = 0;
+15		_speedHoriz = rand() % 24;
+16		_leds = leds;
+17	}
+18	
 </Source>
         <MessageVariables>
           <MessageVariable Name="_loc" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="21" Name="Ball.cpp, line 10" Id="2163d6cd-f45f-4829-b5ad-3a4f738d5395" Enabled="0" Message="loc3 {_loc}" MessageTextType="0" PreProcessedMessage="loc3 {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="10" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="4" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='2163d6cd-f45f-4829-b5ad-3a4f738d5395'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="20" Name="Ball.cpp, line 10" Id="2163d6cd-f45f-4829-b5ad-3a4f738d5395" Enabled="0" Message="loc3 {_loc}" MessageTextType="0" PreProcessedMessage="loc3 {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="10" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="4" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='2163d6cd-f45f-4829-b5ad-3a4f738d5395'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>3	Ball::Ball()
 4	{
 5	}
@@ -472,19 +452,19 @@
 --&gt;10		//_loc = _loc / RAND_MAX;
 11		_width = LED_WIDTH / 2;
 12		_color = CRGB::Blue;
-13		_height = 10000;
-14		_speed = 0;
-15		_leds = leds;
-16	}
-17	
-18	Ball::~Ball()
-19	{
+13		_height = 100;
+14		_speedVert = 0;
+15		_speedHoriz = rand() % 24;
+16		_leds = leds;
+17	}
+18	
+19	Ball::~Ball()
 </Source>
         <MessageVariables>
           <MessageVariable Name="_loc" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="22" Name="Paddle.cpp, line 14" Id="df8b9f73-b84a-4542-9ef8-7cbfe4eb14fe" Enabled="0" Message="Paddle::Loc {_loc}" MessageTextType="0" PreProcessedMessage="Paddle::Loc {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="14" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="5" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='df8b9f73-b84a-4542-9ef8-7cbfe4eb14fe'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="21" Name="Paddle.cpp, line 14" Id="df8b9f73-b84a-4542-9ef8-7cbfe4eb14fe" Enabled="0" Message="Paddle::Loc {_loc}" MessageTextType="0" PreProcessedMessage="Paddle::Loc {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="14" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="5" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='df8b9f73-b84a-4542-9ef8-7cbfe4eb14fe'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>7	
 8	Paddle::~Paddle() {/*Nothing to deconstruct*/ }
 9	
@@ -507,7 +487,7 @@
           <MessageVariable Name="_loc" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="23" Name="Paddle.cpp, line 16" Id="4314bcda-9ec8-4d4f-a3b5-c74a751882fa" Enabled="0" Message="Paddle::Width {_width}" MessageTextType="0" PreProcessedMessage="Paddle::Width {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="16" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="7" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='4314bcda-9ec8-4d4f-a3b5-c74a751882fa'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="22" Name="Paddle.cpp, line 16" Id="4314bcda-9ec8-4d4f-a3b5-c74a751882fa" Enabled="0" Message="Paddle::Width {_width}" MessageTextType="0" PreProcessedMessage="Paddle::Width {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="16" FileColumn="1" FunctionName="init(CRGB leds[NUM_LEDS])" FunctionLineOffset="7" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='4314bcda-9ec8-4d4f-a3b5-c74a751882fa'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>9	
 10	void Paddle::init(CRGB leds[NUM_LEDS]) {
 11		// _loc is on a scale from 0 to TOTAL_GAME_FIELD_UNITS, and is not scaled by number of LEDs.
@@ -530,7 +510,7 @@
           <MessageVariable Name="_width" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="24" Name="Paddle.cpp, line 64" Id="1ad97a40-a7f5-4bfc-b185-123e4f100234" Enabled="0" Message="Paddle rendering from {start} to {end}" MessageTextType="0" PreProcessedMessage="Paddle rendering from {0} to {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="64" FileColumn="1" FunctionName="render()" FunctionLineOffset="6" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='1ad97a40-a7f5-4bfc-b185-123e4f100234'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="23" Name="Paddle.cpp, line 64" Id="1ad97a40-a7f5-4bfc-b185-123e4f100234" Enabled="0" Message="Paddle rendering from {start} to {end}" MessageTextType="0" PreProcessedMessage="Paddle rendering from {0} to {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="64" FileColumn="1" FunctionName="render()" FunctionLineOffset="6" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='1ad97a40-a7f5-4bfc-b185-123e4f100234'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>57	int intensity;
 58	
 59	void Paddle::render() {
@@ -554,7 +534,7 @@
           <MessageVariable Name="end" Index="2" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="25" Name="Paddle.cpp, line 61" Id="63717c86-c235-4d76-940b-b75f63ba4e5d" Enabled="0" Message="Paddle render at {_loc} with width {_width}, so starting at {start}" MessageTextType="0" PreProcessedMessage="Paddle render at {0} with width {1}, so starting at {2}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="61" FileColumn="1" FunctionName="render()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='63717c86-c235-4d76-940b-b75f63ba4e5d'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+      <BreakPoint Index="24" Name="Paddle.cpp, line 61" Id="63717c86-c235-4d76-940b-b75f63ba4e5d" Enabled="0" Message="Paddle render at {_loc} with width {_width}, so starting at {start}" MessageTextType="0" PreProcessedMessage="Paddle render at {0} with width {1}, so starting at {2}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\paddle.cpp" FileLine="61" FileColumn="1" FunctionName="render()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='63717c86-c235-4d76-940b-b75f63ba4e5d'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
         <Source>54	
 55	int start;
 56	int end;
@@ -578,6 +558,140 @@
           <MessageVariable Name="_width" Index="2" />
           <MessageVariable Name="start" Index="3" />
         </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="25" Name="GTLO.ino, line 56" Id="9836a1b7-e156-4c8a-b0e4-6752bbaa1b7d" Enabled="0" Message="Dropping ball number {numOfBalls}" MessageTextType="0" PreProcessedMessage="Dropping ball number {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\gtlo.ino" FileLine="56" FileColumn="1" FunctionName="dropBall()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='9836a1b7-e156-4c8a-b0e4-6752bbaa1b7d'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>49			dropBall();
+50		}
+51		render();
+52	}
+53	
+54	void dropBall() {
+55		if (numOfBalls &lt; MAX_NUM_OF_BALLS - 1) {
+--&gt;56			ballList[numOfBalls] = Ball();
+57			ballList[numOfBalls].init(leds);
+58			numOfBalls++;
+59			timeOfLastBall = millis();
+60		}
+61	}
+62	/****************************************************************************
+63	**                                                                         **
+64	**                             UTILITIES                                   **
+65	**                                                                         **
+</Source>
+        <MessageVariables>
+          <MessageVariable Name="numOfBalls" Index="1" />
+        </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="26" Name="GTLO.ino, line 45" Id="3d84e126-f2d6-4b15-a00f-750719acbf71" Enabled="0" Message="Updating ball {i} of {numOfBalls}" MessageTextType="0" PreProcessedMessage="Updating ball {0} of {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\gtlo.ino" FileLine="45" FileColumn="1" FunctionName="loop()" FunctionLineOffset="9" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='3d84e126-f2d6-4b15-a00f-750719acbf71'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>38	  /* add main program code here */
+39		// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
+40		fill_solid(leds, NUM_LEDS, CRGB::Black);
+41		paddle.update();
+42		paddle.render();
+43		for (i = 0; i &lt; numOfBalls; i++) {
+44			// TODO - Figure out why only the first ball is updating
+--&gt;45			ballList[i].update();
+46			ballList[i].render();
+47		}
+48		if (millis() - timeOfLastBall &gt; 5000) {
+49			dropBall();
+50		}
+51		render();
+52	}
+53	
+54	void dropBall() {
+</Source>
+        <MessageVariables>
+          <MessageVariable Name="i" Index="1" />
+          <MessageVariable Name="numOfBalls" Index="2" />
+        </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="27" Name="GTLO.ino, line 51" Id="7d94c704-c7d3-408d-b3cd-69b72f107a98" Enabled="0" Message="Done rendering at {millis()}" MessageTextType="0" PreProcessedMessage="Done rendering at {0}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\gtlo.ino" FileLine="51" FileColumn="1" FunctionName="loop()" FunctionLineOffset="16" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='7d94c704-c7d3-408d-b3cd-69b72f107a98'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>44			// TODO - Figure out why only the first ball is updating
+45			ballList[i].update();
+46			ballList[i].render();
+47		}
+48		if (millis() - timeOfLastBall &gt; 5000) {
+49			dropBall();
+50		}
+--&gt;51		render();
+52	}
+53	
+54	void dropBall() {
+55		if (numOfBalls &lt; MAX_NUM_OF_BALLS - 1) {
+56			ballList[numOfBalls] = Ball();
+57			ballList[numOfBalls].init(leds);
+58			numOfBalls++;
+59			timeOfLastBall = millis();
+60		}
+</Source>
+        <MessageVariables>
+          <MessageVariable Name="millis()" Index="1" />
+        </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="28" Name="GTLO.ino, line 46" Id="1b0ea08c-2e9b-48fc-8b8e-9d15dff2d80e" Enabled="0" Message="Rendering ball {i} of {numOfBalls}" MessageTextType="0" PreProcessedMessage="Rendering ball {0} of {1}" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\gtlo.ino" FileLine="46" FileColumn="1" FunctionName="loop()" FunctionLineOffset="11" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='1b0ea08c-2e9b-48fc-8b8e-9d15dff2d80e'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>39		// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
+40		fill_solid(leds, NUM_LEDS, CRGB::Black);
+41		paddle.update();
+42		paddle.render();
+43		for (i = 0; i &lt; numOfBalls; i++) {
+44			// TODO - Figure out why only the first ball is updating
+45			ballList[i].update();
+--&gt;46			ballList[i].render();
+47		}
+48		if (millis() - timeOfLastBall &gt; 5000) {
+49			dropBall();
+50		}
+51		render();
+52	}
+53	
+54	void dropBall() {
+55		if (numOfBalls &lt; MAX_NUM_OF_BALLS - 1) {
+</Source>
+        <MessageVariables>
+          <MessageVariable Name="i" Index="1" />
+          <MessageVariable Name="numOfBalls" Index="2" />
+        </MessageVariables>
+      </BreakPoint>
+      <BreakPoint Index="29" Name="Ball.cpp, line 43" Id="8f5f29de-ab00-4b69-8278-08375e9ddd78" Enabled="0" Message="Rendering ball" MessageTextType="0" PreProcessedMessage="Rendering ball" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="43" FileColumn="1" FunctionName="render()" FunctionLineOffset="3" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='8f5f29de-ab00-4b69-8278-08375e9ddd78'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>36			_loc = 0;
+37			_speedHoriz *= -1;
+38		}
+39	}
+40	
+41	void Ball::render() {
+42		// You need to start at loc - 1/2 width, rounding down
+--&gt;43		start = max(0, _loc - _width);
+44		start = start / LED_WIDTH;
+45		// And go up to loc + 1/2 width, rounding up
+46		end = 2 + (min(GAME_FIELD_UPPER_LIMIT, _loc + _width) / LED_WIDTH);
+47		for (i = start; i &lt; end; i++) {
+48			// The formula (scaled to 0.0-1.0) is:
+49			// intensity = max(0, min(1, (("half the width minus 1") + 1) - ("absolute distance from loc to i")
+50			// Because I said so.
+51			// Or you can look at the JPG or the Excel file in this folder and figure it out yourself.
+52	
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="30" Name="Ball.cpp, line 24" Id="f84ed5a7-bb5b-4c42-ac1c-edf014c1ce94" Enabled="0" Message="Updating ball" MessageTextType="0" PreProcessedMessage="Updating ball" Condition="" ConditionType="1" CurrentHits="0" File="d:\dropbox\ajc\arduino\gtlo\ball.cpp" FileLine="24" FileColumn="1" FunctionName="update()" FunctionLineOffset="2" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="C++" LocationType="3" Tag="&lt;vmbp Id='f84ed5a7-bb5b-4c42-ac1c-edf014c1ce94'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
+        <Source>17	}
+18	
+19	Ball::~Ball()
+20	{
+21	}
+22	
+23	void Ball::update() {
+--&gt;24		_speedVert -= 1;
+25		_height += _speedVert;
+26		if (_height &lt; 0) {
+27			_height = 0;
+28			_speedVert = -_speedVert;
+29		}
+30		_loc += _speedHoriz;
+31		if (_loc &gt; TOTAL_GAME_FIELD_UNITS) {
+32			_loc = TOTAL_GAME_FIELD_UNITS;
+33			_speedHoriz *= -1;
+</Source>
       </BreakPoint>
     </BreakPoints>
   </Program>

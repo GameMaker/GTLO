@@ -18,6 +18,7 @@ Ball ballList[MAX_NUM_OF_BALLS];
 int numOfBalls = 0;
 
 int reading;
+int timeOfLastBall;
 
 Paddle paddle;
 
@@ -36,12 +37,16 @@ void loop()
 
   /* add main program code here */
 	// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
-	fill_solid(leds, NUM_LEDS, CRGB::White);
+	fill_solid(leds, NUM_LEDS, CRGB::Black);
 	paddle.update();
 	paddle.render();
 	for (i = 0; i < numOfBalls; i++) {
+		// TODO - Figure out why only the first ball is updating
 		ballList[i].update();
 		ballList[i].render();
+	}
+	if (millis() - timeOfLastBall > 5000) {
+		dropBall();
 	}
 	render();
 }
@@ -51,6 +56,7 @@ void dropBall() {
 		ballList[numOfBalls] = Ball();
 		ballList[numOfBalls].init(leds);
 		numOfBalls++;
+		timeOfLastBall = millis();
 	}
 }
 /****************************************************************************

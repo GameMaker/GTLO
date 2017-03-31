@@ -21,7 +21,6 @@
 
 extern char debugString[512];
 
-extern int i;
 extern int start;
 extern int end;
 extern int intensity;
