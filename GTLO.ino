@@ -11,7 +11,6 @@
 /* Globals */
 int i;
 char debugString[512];
-int LED_WIDTH = TOTAL_GAME_FIELD_UNITS / NUM_LEDS;
 
 CRGB leds[NUM_LEDS];
 
@@ -37,6 +36,7 @@ void loop()
 
   /* add main program code here */
 	// TODO Instead of delay, use a nextFrameMillis system to try and maintain 50, so it doesn't slow down if frames start taking significant millis
+	fill_solid(leds, NUM_LEDS, CRGB::White);
 	paddle.update();
 	paddle.render();
 	for (i = 0; i < numOfBalls; i++) {

@@ -8,16 +8,15 @@ Paddle::Paddle() {};
 Paddle::~Paddle() {/*Nothing to deconstruct*/ }
 
 void Paddle::init(CRGB leds[NUM_LEDS]) {
-	// _loc is on a scale from 0 to 999, and is not scaled by number of LEDs.
+	// _loc is on a scale from 0 to TOTAL_GAME_FIELD_UNITS, and is not scaled by number of LEDs.
 	// Game starts with the paddle in the middle of the line. All spatial units are in %, but using 
 	// integer math, with each unit equalling 1/100 of 1%.
-	_loc = 4999;
+	_loc = (TOTAL_GAME_FIELD_UNITS / 2) - 1;
 	// Width also needs to be in percentage. Since I'm using 50 LEDs as a start, 1 light is 2%, so 20/1000ths.
-	_width = 100; // We extend this many units in each direction, so this is 100, 
-	// or "1" unit each way, so 2% of the whole bar. This means that with less than 50 LEDs, you can
-	// have a paddle that disappears in between LEDs.
+	_width = LED_WIDTH; 
+	// Start one LED wide
 	// TODO - put a warning message if you try to play on less than 50.
-	_color = CRGB::Blue;
+	_color = CRGB::Red;
 	_brightness = 255;
 	_brightnessDir = -1;
 	_brightnessSpeed = 2;
@@ -40,11 +39,11 @@ void Paddle::update() {
 
 	if (!adjustedPaddleLastFrame) {
 		if (joyY > 512 + JOY_HALF_DEAD_ZONE) {
-			_width = min(TOTAL_GAME_FIELD_UNITS / 2, _width + PADDLE_WIDTH_CHANGE_INCREMENT);
+			_width = min(TOTAL_GAME_FIELD_UNITS / 2, _width + LED_WIDTH);
 			adjustedPaddleLastFrame = true;
 		}
 		else if (joyY < 512 - JOY_HALF_DEAD_ZONE) {
-			_width = max(100, _width - PADDLE_WIDTH_CHANGE_INCREMENT);
+			_width = max(100, _width - LED_WIDTH);
 			adjustedPaddleLastFrame = true;
 		}
 	}
@@ -73,8 +72,8 @@ void Paddle::render() {
 		// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
 		intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 		intensity = max(0,min(100, intensity));
-		_leds[i].r = (_color.r * intensity) / 100;
-		_leds[i].g = (_color.g * intensity) / 100;
-		_leds[i].b = (_color.b * intensity) / 100;
+		_leds[i].r = max(0, _leds[i].r - ((_color.r * intensity) / 100));
+		_leds[i].g = max(0, _leds[i].g - ((_color.g * intensity) / 100));
+		_leds[i].b = max(0, _leds[i].b - ((_color.b * intensity) / 100));
 	}
 }

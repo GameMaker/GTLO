@@ -9,7 +9,7 @@ void Ball::init(CRGB leds[NUM_LEDS]) {
 	_loc = _loc / (RAND_MAX / TOTAL_GAME_FIELD_UNITS);
 	//_loc = _loc / RAND_MAX;
 	_width = LED_WIDTH / 2;
-	_color = CRGB::Yellow;
+	_color = CRGB::Blue;
 	_height = 10000;
 	_speed = 0;
 	_leds = leds;
@@ -44,8 +44,8 @@ void Ball::render() {
 		// EDIT - redoing it as integer, using just a simple "how far away am I, clamp that to 100%"
 		intensity = 100 + _width - abs((i * LED_WIDTH) - _loc);
 		intensity = (10000 * max(0, min(100, intensity))) / (10001 - _height);
-		_leds[i].r = (_color.r * intensity) / 100;
-		_leds[i].g = (_color.g * intensity) / 100;
-		_leds[i].b = (_color.b * intensity) / 100;
+		_leds[i].r = max(0, _leds[i].r - ((_color.r * intensity) / 100));
+		_leds[i].g = max(0, _leds[i].g - ((_color.g * intensity) / 100));
+		_leds[i].b = max(0, _leds[i].b - ((_color.b * intensity) / 100));
 	}
 }
